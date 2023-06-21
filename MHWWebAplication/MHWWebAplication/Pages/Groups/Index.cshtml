@@ -1,0 +1,35 @@
+﻿@page
+@model MHWWebAplication.Pages.Groups.IndexModel
+
+@{
+    ViewData["Title"] = "Grupy";
+}
+
+<h1 class="display-4">Grupy</h1>
+
+<p>
+    <a asp-page="Create">Utwórz grupę</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Group[0].Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Group) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.GroupId">Edytuj</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.GroupId">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
